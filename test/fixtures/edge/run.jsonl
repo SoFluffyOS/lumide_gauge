@@ -1,0 +1,14 @@
+{"type":"out","message":"Python: 3.14.4"}
+{"type":"suiteStart"}
+{"type":"specStart","id":"/project/specs/edge.spec","name":"Edge spec","filename":"/project/specs/edge.spec","line":1}
+{"type":"scenarioStart","id":"/project/specs/edge.spec:6","parentId":"/project/specs/edge.spec","name":"Failing with teardown","filename":"/project/specs/edge.spec","line":6,"result":{"time":0}}
+{"type":"out","message":"teardown ran"}
+{"type":"scenarioEnd","id":"/project/specs/edge.spec:6","parentId":"/project/specs/edge.spec","name":"Failing with teardown","filename":"/project/specs/edge.spec","line":6,"result":{"status":"fail","time":1,"errors":[{"text":"The word \"gauge\" has \"9\" vowels.","filename":"specs/edge.spec","message":"Exception occurred","lineNo":"","stackTrace":"Traceback (most recent call last):\n  File \"/venv/lib/python3.14/site-packages/getgauge/executor.py\", line 35, in execute_method\n    step.impl(*params)\n    ~~~~~~~~~^^^^^^^^^\n  File \"/project/step_impl/step_impl.py\", line 16, in assert_no_of_vowels_in\n    assert str(number) == str(number_of_vowels(word))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}]}}
+{"type":"scenarioStart","id":"/project/specs/edge.spec:12","parentId":"/project/specs/edge.spec","name":"Hook fails","filename":"/project/specs/edge.spec","line":12,"result":{"time":0}}
+{"type":"scenarioEnd","id":"/project/specs/edge.spec:12","parentId":"/project/specs/edge.spec","name":"Hook fails","filename":"/project/specs/edge.spec","line":12,"result":{"status":"fail","time":0,"beforeHookFailure":{"text":"Before Scenario","filename":"","message":"hook exploded","lineNo":"","stackTrace":"Traceback (most recent call last):\n  File \"/venv/lib/python3.14/site-packages/getgauge/executor.py\", line 35, in execute_method\n    step.impl(*params)\n    ~~~~~~~~~^^^^^^^^^\n  File \"/project/step_impl/step_impl.py\", line 48, in failing_hook\n    raise Exception(\"hook exploded\")\nException: hook exploded\n"}}}
+{"type":"specEnd","id":"/project/specs/edge.spec","name":"Edge spec","filename":"/project/specs/edge.spec","line":1,"result":{"status":"fail","time":0}}
+{"type":"suiteEnd","result":{"status":"fail","time":0}}
+{"type":"out","message":"Specifications:\t1 executed\t0 passed\t1 failed\t0 skipped"}
+{"type":"out","message":"Scenarios:\t2 executed\t0 passed\t2 failed\t0 skipped"}
+{"type":"out","message":""}
+{"type":"out","message":"Total time taken: 4ms"}

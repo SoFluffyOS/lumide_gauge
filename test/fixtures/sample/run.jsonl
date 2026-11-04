@@ -1,0 +1,32 @@
+{"type":"out","message":"Python: 3.14.4"}
+{"type":"out","message":"[ValidationError] /project/specs/second.spec:18 Step implementation not found =\u003e 'This step has no implementation'"}
+{"type":"out","message":"Add the following missing implementations to fix `Step implementation not found` errors."}
+{"type":"out","message":""}
+{"type":"out","message":"@step(\"This step has no implementation\")"}
+{"type":"out","message":"def this_step_has_no_implementation():"}
+{"type":"out","message":"    assert False, \"Add implementation code\""}
+{"type":"out","message":""}
+{"type":"suiteStart"}
+{"type":"specStart","id":"/project/specs/example.spec","name":"Specification Heading","filename":"/project/specs/example.spec","line":1}
+{"type":"scenarioStart","id":"/project/specs/example.spec:13","parentId":"/project/specs/example.spec","name":"Vowel counts in single word","filename":"/project/specs/example.spec","line":13,"result":{"time":0}}
+{"type":"scenarioEnd","id":"/project/specs/example.spec:13","parentId":"/project/specs/example.spec","name":"Vowel counts in single word","filename":"/project/specs/example.spec","line":13,"result":{"status":"pass","time":0}}
+{"type":"scenarioStart","id":"/project/specs/example.spec:20","parentId":"/project/specs/example.spec","name":"Vowel counts in multiple word","filename":"/project/specs/example.spec","line":20,"result":{"time":0}}
+{"type":"scenarioEnd","id":"/project/specs/example.spec:20","parentId":"/project/specs/example.spec","name":"Vowel counts in multiple word","filename":"/project/specs/example.spec","line":20,"result":{"status":"pass","time":0}}
+{"type":"specEnd","id":"/project/specs/example.spec","name":"Specification Heading","filename":"/project/specs/example.spec","line":1,"result":{"status":"pass","time":0}}
+{"type":"specStart","id":"/project/specs/second.spec","name":"Second spec","filename":"/project/specs/second.spec","line":1}
+{"type":"scenarioStart","id":"/project/specs/second.spec:5","parentId":"/project/specs/second.spec","name":"Passing concept scenario","filename":"/project/specs/second.spec","line":5,"result":{"time":0}}
+{"type":"scenarioEnd","id":"/project/specs/second.spec:5","parentId":"/project/specs/second.spec","name":"Passing concept scenario","filename":"/project/specs/second.spec","line":5,"result":{"status":"pass","time":0}}
+{"type":"scenarioStart","id":"/project/specs/second.spec:9","parentId":"/project/specs/second.spec","name":"Failing scenario","filename":"/project/specs/second.spec","line":9,"result":{"time":0}}
+{"type":"scenarioEnd","id":"/project/specs/second.spec:9","parentId":"/project/specs/second.spec","name":"Failing scenario","filename":"/project/specs/second.spec","line":9,"result":{"status":"fail","time":0,"errors":[{"text":"The word \"gauge\" has \"4\" vowels.","filename":"specs/second.spec","message":"Exception occurred","lineNo":"","stackTrace":"Traceback (most recent call last):\n  File \"/venv/lib/python3.14/site-packages/getgauge/executor.py\", line 35, in execute_method\n    step.impl(*params)\n    ~~~~~~~~~^^^^^^^^^\n  File \"/project/step_impl/step_impl.py\", line 16, in assert_no_of_vowels_in\n    assert str(number) == str(number_of_vowels(word))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}]}}
+{"type":"scenarioStart","id":"/project/specs/second.spec:16","parentId":"/project/specs/second.spec","name":"Unimplemented scenario","filename":"/project/specs/second.spec","line":16,"result":{"time":0}}
+{"type":"scenarioEnd","id":"/project/specs/second.spec:16","parentId":"/project/specs/second.spec","name":"Unimplemented scenario","filename":"/project/specs/second.spec","line":16,"result":{"status":"skip","time":0,"errors":[{"text":"This step has no implementation","filename":"specs/second.spec","message":"Step implementation not found","lineNo":"","stackTrace":""}]}}
+{"type":"scenarioStart","id":"/project/specs/second.spec:20","parentId":"/project/specs/second.spec","name":"Table driven scenario","filename":"/project/specs/second.spec","line":20,"result":{"time":0,"table":{"text":"\n   |Word |Count|\n   |-----|-----|\n   |Gauge|3    |\n","rowIndex":0}}}
+{"type":"scenarioEnd","id":"/project/specs/second.spec:20","parentId":"/project/specs/second.spec","name":"Table driven scenario","filename":"/project/specs/second.spec","line":20,"result":{"status":"pass","time":0,"table":{"text":"\n   |Word |Count|\n   |-----|-----|\n   |Gauge|3    |\n","rowIndex":0}}}
+{"type":"scenarioStart","id":"/project/specs/second.spec:20","parentId":"/project/specs/second.spec","name":"Table driven scenario","filename":"/project/specs/second.spec","line":20,"result":{"time":0,"table":{"text":"\n   |Word|Count|\n   |----|-----|\n   |Snap|2    |\n","rowIndex":1}}}
+{"type":"scenarioEnd","id":"/project/specs/second.spec:20","parentId":"/project/specs/second.spec","name":"Table driven scenario","filename":"/project/specs/second.spec","line":20,"result":{"status":"fail","time":0,"errors":[{"text":"The word \u003cWord\u003e has \u003cCount\u003e vowels.","filename":"/project/specs/second.spec","message":"Exception occurred","lineNo":"27","stackTrace":"Traceback (most recent call last):\n  File \"/venv/lib/python3.14/site-packages/getgauge/executor.py\", line 35, in execute_method\n    step.impl(*params)\n    ~~~~~~~~~^^^^^^^^^\n  File \"/project/step_impl/step_impl.py\", line 16, in assert_no_of_vowels_in\n    assert str(number) == str(number_of_vowels(word))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"}],"table":{"text":"\n   |Word|Count|\n   |----|-----|\n   |Snap|2    |\n","rowIndex":1}}}
+{"type":"specEnd","id":"/project/specs/second.spec","name":"Second spec","filename":"/project/specs/second.spec","line":1,"result":{"status":"fail","time":0}}
+{"type":"suiteEnd","result":{"status":"fail","time":0}}
+{"type":"out","message":"Specifications:\t2 executed\t1 passed\t1 failed\t0 skipped"}
+{"type":"out","message":"Scenarios:\t5 executed\t3 passed\t2 failed\t1 skipped"}
+{"type":"out","message":""}
+{"type":"out","message":"Total time taken: 9ms"}
