@@ -1,0 +1,53 @@
+id: lumide_gauge
+name: 'Gauge'
+description: 'Gauge test automation support for Lumide IDE: specs, concepts, and running specs in the Tests pane.'
+entry_point: 'bin/main.dart'
+
+activation_events:
+  - 'workspaceContains:manifest.json'
+  - 'workspaceContains:*.spec'
+  - 'workspaceContains:*.cpt'
+  - 'onCommand:gauge.newProject'
+  - 'onCommand:gauge.installRunner'
+
+permissions:
+  - fileSystem:
+      - '${workspace}/**'
+  - shell:
+      - gauge
+
+configuration:
+  - key: gauge.path
+    type: filePath
+    title: 'Gauge Executable Path'
+    description: 'Path to the gauge executable. If empty, the system PATH will be used.'
+
+contributes:
+  commands:
+    - id: gauge.runAll
+      title: 'Gauge: Run All Specs'
+      category: 'Gauge'
+    - id: gauge.runSpec
+      title: 'Gauge: Run Spec'
+      category: 'Gauge'
+    - id: gauge.runScenario
+      title: 'Gauge: Run Scenario'
+      category: 'Gauge'
+    - id: gauge.runFailed
+      title: 'Gauge: Run Failed Scenarios'
+      category: 'Gauge'
+    - id: gauge.runTags
+      title: 'Gauge: Run Specs with Tags'
+      category: 'Gauge'
+    - id: gauge.stop
+      title: 'Gauge: Stop Specs'
+      category: 'Gauge'
+    - id: gauge.newProject
+      title: 'Gauge: New Project'
+      category: 'Gauge'
+    - id: gauge.installRunner
+      title: 'Gauge: Install Language Runner'
+      category: 'Gauge'
+    - id: gauge.restartLanguageServer
+      title: 'Gauge: Restart Language Server'
+      category: 'Gauge'
