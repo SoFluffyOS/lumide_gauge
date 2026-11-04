@@ -18,7 +18,7 @@ const cmdExecute = 'gauge.execute';
 /// The language server's provider id.
 const languageServerId = 'gauge-lsp';
 const gaugeLanguageId = 'gauge';
-const gaugeFileExtensions = ['.spec', '.cpt'];
+const gaugeFileExtensions = ['.spec', '.cpt', '.md'];
 
 /// Output channels.
 const channelGauge = 'Gauge';

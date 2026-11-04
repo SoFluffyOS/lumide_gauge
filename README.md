@@ -54,7 +54,7 @@ Access these via the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
 
 The plugin starts for a workspace with a Gauge `manifest.json` (one with a `Language` key), at its root or a few folders down. In a folder of several Gauge projects, each gets its own language server.
 
-Lumide highlights `.spec` and `.cpt` files as Gauge only inside a Gauge project, so RPM and PyInstaller `.spec` files keep their own handling and never reach Gauge's language server.
+Lumide highlights `.spec` and `.cpt` files, and `.md` specs in the project's spec folders, as Gauge only inside a Gauge project, so RPM and PyInstaller `.spec` files and other Markdown keep their own handling and never reach Gauge's language server.
 
 ## How runs work
 
