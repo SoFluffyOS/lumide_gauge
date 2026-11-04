@@ -118,19 +118,13 @@ class GaugeService {
     return projects = found;
   }
 
-  /// Starts Gauge's language server for `.spec` and `.cpt` files. Gauge
-  /// projects that are workspace folders each get their own server;
-  /// otherwise the server runs for the first project found.
+  /// Starts Gauge's language server for `.spec` and `.cpt` files: one per
+  /// Gauge project, rooted at its `manifest.json`, so a folder of several
+  /// projects gets a server for each.
   Future<void> registerLanguageServer() async {
     if (projects.isEmpty) {
       log?.call('No Gauge project; the language server is not started.');
       return;
-    }
-    final folders = (await _workspaceFolders()).toSet();
-    final perFolder = projects.every(folders.contains);
-    if (!perFolder && projects.length > 1) {
-      log?.call('Several Gauge projects inside workspace folders; the '
-          'language server runs for ${projects.first}.');
     }
     await context.languages.registerLanguageServer(
       id: languageServerId,
@@ -138,12 +132,9 @@ class GaugeService {
       displayName: 'Gauge',
       fileExtensions: gaugeFileExtensions,
       command: command,
-      args: [
-        'daemon',
-        '--lsp',
-        if (!perFolder) '--dir=${projects.first}',
-      ],
-      runsPerFolder: perFolder,
+      args: const ['daemon', '--lsp'],
+      runsPerFolder: true,
+      rootMarkers: const ['manifest.json'],
     );
     log?.call('Gauge language server registered for ${projects.join(', ')}');
   }

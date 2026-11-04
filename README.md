@@ -48,10 +48,11 @@ Access these via the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
 
 ## Requirements
 
+- **Lumide 0.25.0** or later.
 - **Gauge**: install it from [docs.gauge.org](https://docs.gauge.org/getting_started/installing-gauge). Without it, the plugin says how to install it.
 - **A language runner** for your step implementations, such as `gauge install python`. When a project needs a runner that is missing, the plugin offers to install it.
 
-The plugin starts for a workspace with a Gauge `manifest.json` (one with a `Language` key) at its root, or when you open a `.spec` or `.cpt` file. A Gauge project in a subfolder is found too.
+The plugin starts for a workspace with a Gauge `manifest.json` (one with a `Language` key) or `.spec` files, at its root or a few folders down, or when you open a `.spec` or `.cpt` file. In a folder of several Gauge projects, each gets its own language server.
 
 ## How runs work
 
