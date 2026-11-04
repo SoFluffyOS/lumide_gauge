@@ -52,7 +52,9 @@ Access these via the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
 - **Gauge**: install it from [docs.gauge.org](https://docs.gauge.org/getting_started/installing-gauge). Without it, the plugin says how to install it.
 - **A language runner** for your step implementations, such as `gauge install python`. When a project needs a runner that is missing, the plugin offers to install it.
 
-The plugin starts for a workspace with a Gauge `manifest.json` (one with a `Language` key) or `.spec` files, at its root or a few folders down, or when you open a `.spec` or `.cpt` file. In a folder of several Gauge projects, each gets its own language server.
+The plugin starts for a workspace with a Gauge `manifest.json` (one with a `Language` key), at its root or a few folders down. In a folder of several Gauge projects, each gets its own language server.
+
+Lumide highlights `.spec` and `.cpt` files as Gauge only inside a Gauge project, so RPM and PyInstaller `.spec` files keep their own handling and never reach Gauge's language server.
 
 ## How runs work
 
@@ -62,7 +64,6 @@ One run per project runs at a time, since Gauge keeps the last run's state for `
 
 ## Known limitations
 
-- **Syntax highlighting**: Lumide picks highlighting by file extension, and plugins cannot add one yet, so `.spec` and `.cpt` files are not highlighted.
 - **Debug Scenario** code lenses, which Gauge shows for some runners, do nothing.
 - **All Tests pane**: specs appear there once they have run; Lumide does not list them before.
 

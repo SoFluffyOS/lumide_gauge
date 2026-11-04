@@ -5,9 +5,6 @@ entry_point: 'bin/main.dart'
 
 activation_events:
   - 'workspaceContains:manifest.json'
-  - 'workspaceContains:*.spec'
-  - 'workspaceContains:*.cpt'
-  - 'workspaceContains:**/*.spec'
   - 'workspaceContains:**/manifest.json'
   - 'onCommand:gauge.newProject'
   - 'onCommand:gauge.installRunner'
