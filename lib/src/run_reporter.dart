@@ -67,6 +67,9 @@ class GaugeRunReporter {
 
   bool get hasFailures => _failed > 0;
 
+  /// Gauge's last message, which says why a run that ran nothing ended.
+  String? lastMessage;
+
   int get scenarioCount => _passed + _failed + _skipped;
 
   /// The spec or scenario behind a result id, to run it again.
@@ -87,12 +90,15 @@ class GaugeRunReporter {
     if (trimmed.isEmpty) return;
     final event = _decode(trimmed);
     if (event == null) {
+      lastMessage = trimmed;
       onOutput?.call(line);
       return;
     }
     switch (event['type']) {
       case 'out':
-        onOutput?.call(_string(event['message']) ?? '');
+        final message = _string(event['message']) ?? '';
+        if (message.trim().isNotEmpty) lastMessage = message.trim();
+        onOutput?.call(message);
       case 'specStart':
         await _onSpecStart(event);
       case 'scenarioStart':

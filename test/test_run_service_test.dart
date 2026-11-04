@@ -181,21 +181,29 @@ void main() {
         LumideTestState.skipped);
   });
 
-  test('says where to look when gauge fails before running', () async {
+  test('says why gauge ended without running scenarios', () async {
     await service.runFailed();
-    expect(onlyProcess().arguments, [
-      'run',
-      '--machine-readable',
-      '--failed',
+    final process = onlyProcess();
+    expect(process.arguments, ['run', '--machine-readable', '--failed']);
+    process.emit([
+      {'type': 'out', 'message': 'No failed tests found.'},
     ]);
+    await process.exit(1);
+    final run = context.tests.runs.single;
+    await run.ended.future;
+    expect(run.summary, 'gauge exited with code 1: No failed tests found.');
+    expect(context.window.channels.single.shown, isTrue);
+  });
+
+  test('points at the output when gauge says nothing', () async {
+    await service.runAll();
     await onlyProcess().exit(1);
     final run = context.tests.runs.single;
     await run.ended.future;
     expect(
-        run.summary,
-        'gauge exited with code 1. See the output for '
-        'details.');
-    expect(context.window.channels.single.shown, isTrue);
+      run.summary,
+      'gauge exited with code 1. See the output for details.',
+    );
   });
 
   test('runs specs with the tags the user enters', () async {

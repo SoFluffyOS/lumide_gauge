@@ -80,7 +80,8 @@ class GaugeTestRunService {
   /// cursor in the active spec.
   Future<void> runScenario([Map<String, dynamic>? args]) async {
     final file = _pathFromArgs(args) ?? await _activePath();
-    if (file == null || path.extension(file) != '.spec') {
+    if (file == null ||
+        !const {'.spec', '.md'}.contains(path.extension(file))) {
       await _warn('Open a Gauge spec and put the cursor in a scenario.');
       return;
     }
@@ -368,8 +369,11 @@ class GaugeTestRunService {
 
     final summary = switch ((active.cancelled, reporter.scenarioCount)) {
       (true, _) => 'Stopped. ${reporter.summary}',
-      (false, 0) when exitCode != 0 =>
-        'gauge exited with code $exitCode. See the output for details.',
+      (false, 0) when exitCode != 0 => switch (reporter.lastMessage) {
+          final message? => 'gauge exited with code $exitCode: $message',
+          null => 'gauge exited with code $exitCode. See the output for '
+              'details.',
+        },
       _ => reporter.summary,
     };
     active.outputBuffer.add(summary);

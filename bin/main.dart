@@ -60,7 +60,7 @@ class GaugePlugin extends LumidePlugin {
     for (final MapEntry(key: id, value: callback) in callbacks.entries) {
       await context.commands.registerCommand(
         id: id,
-        title: gaugeCommandTitles[id]!,
+        title: gaugeCommandTitles[id] ?? id,
         category: 'Gauge',
         callback: callback,
       );
