@@ -311,6 +311,12 @@ class _Tests implements LumideTests {
     runs.add(run);
     return run;
   }
+
+  @override
+  LumideDisposable onDidEndRun(
+    void Function(LumideTestRunSummary summary) callback,
+  ) =>
+      LumideDisposable(() {});
 }
 
 class _Channel implements LumideOutputChannel {
